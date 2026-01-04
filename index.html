@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="call-screen">
+      <video
+        id="callerVideo"
+        src="video/video-normal.mp4"
+        loop
+        muted
+        playsinline
+      ></video>
+
+      <div id="overlay" class="detection-overlay hidden">
+        <img class="call-icon alert" id="alert-icon" src="images/warning.svg" />
+        <div class="alert" id="alert-text">DEEPFAKE DETECTED</div>
+      </div>
+      <div id="participants-list" class="participants-list hidden">
+        <button class="contact-box">
+          <div class="circle" id="contact-circle">
+            <img
+              class="contact-icon"
+              id="webcam-icon"
+              src="images/webcam.svg"
+            />
+          </div>
+          <div class="contact-text" onclick="showPerson(1)">Pedro Pascal</div>
+        </button>
+        <button class="contact-box">
+          <div class="circle" id="contact-circle">
+            <img
+              class="contact-icon"
+              id="webcam-icon"
+              src="images/webcam.svg"
+            />
+          </div>
+          <div class="contact-text" onclick="showPerson(2)">Barack Obama</div>
+        </button>
+        <button class="contact-box">
+          <div class="circle" id="contact-circle">
+            <img
+              class="contact-icon"
+              id="webcam-icon"
+              src="images/webcam.svg"
+            />
+          </div>
+          <div class="contact-text" onclick="showPerson(3)">You</div>
+        </button>
+      </div>
+      <div class="navBar">
+        <div class="controls">
+          <button class="btn" id="microphone" onclick="activate('microphone')">
+            <img
+              class="call-icon active"
+              id="microphone-icon"
+              src="images/microphone.svg"
+            />
+          </button>
+          <button class="btn" id="webcam" onclick="activate('webcam')">
+            <img
+              class="call-icon active"
+              id="webcam-icon"
+              src="images/webcam.svg"
+            />
+          </button>
+          <button class="btn special" onclick="startScan()">
+            🛡️ Scan Call
+          </button>
+          <button class="btn parts" id="parts" onclick="showHideParts()">
+            <img
+              class="call-icon active"
+              id="parts-icon"
+              src="images/parts.svg"
+            />
+          </button>
+        </div>
+        <div class="endCall">
+          <button class="btn end">
+            <image class="call-icon" src="images/phone.svg"></image>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
