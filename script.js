@@ -1,3 +1,11 @@
+// Initialize the app to always start with the incoming call window
+window.onload = function () {
+  if (!sessionStorage.getItem("appLaunched")) {
+    sessionStorage.setItem("appLaunched", "true");
+    window.location.href = "incomingCall.html";
+  }
+};
+
 // Button logic
 buttonReg = {
   microphone: true,
@@ -89,8 +97,50 @@ function showPerson(id) {
   }
 }
 
+// Timer logic
+let callStartTime;
+
+function startCallTimer() {
+  callStartTime = Date.now();
+  updateCallTimer();
+}
+
+function updateCallTimer() {
+  const elapsed = Date.now() - callStartTime;
+  const minutes = Math.floor(elapsed / 60000)
+    .toString()
+    .padStart(2, "0");
+  const seconds = Math.floor((elapsed % 60000) / 1000)
+    .toString()
+    .padStart(2, "0");
+  const timerElement = document.getElementById("call-timer");
+  if (timerElement) {
+    timerElement.textContent = `${minutes}:${seconds}`;
+  }
+  requestAnimationFrame(updateCallTimer);
+}
+
 //Window switching logic
+function acceptCall() {
+  window.location.href = "index.html"; // Redirect to the main app
+}
+
+function denyCall() {
+  window.close(); // Close the window
+}
+
 function closeApp() {
-  console.log("Closing the app...");
-  window.close(); // Close the current window
+  window.location.href = "incomingCall.html";
+}
+
+function startVideo() {
+  const videoElement = document.getElementById("callerVideo");
+  if (videoElement) {
+    videoElement.play();
+  }
+}
+
+if (window.location.pathname.endsWith("index.html")) {
+  startCallTimer();
+  startVideo();
 }
