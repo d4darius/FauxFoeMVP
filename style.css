@@ -28,6 +28,7 @@ video {
 }
 .detection-overlay.visible {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
@@ -39,35 +40,49 @@ video {
   bottom: 20%;
   right: 1%;
   width: 300px;
-  height: 200px;
+  height: 300px;
   display: none;
 }
 .participants-list.visible {
   display: block;
   row-gap: 50px;
 }
+.title {
+  color: rgba(255, 255, 255, 0.833);
+  font-size: 20;
+  font-weight: bold;
+  height: 40px;
+  padding: 10px;
+  border-bottom: 2px solid white;
+}
+.subtitle {
+  color: rgba(255, 255, 255, 0.657);
+  font-size: 15;
+  font-weight: bold;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
 .contact-box {
-  background-color: #777777;
+  background-color: #333;
   border-radius: 50px;
+  border-width: 0px;
   width: 100%;
   height: 60px;
   display: flex;
   gap: 1px;
 }
 .circle {
-  background-color: #333;
+  background-color: rgba(255, 255, 255, 0.833);
   border-radius: 50%;
   position: relative;
   top: 5px;
   width: 45px;
   height: 45px;
-}
-.contact-icon {
-  position: relative;
-  top: 5px;
-  width: 30px;
-  height: 30px;
-  filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+  color: #333;
+  display: flex;
+  justify-content: center; /* Centers horizontally (Left/Right) */
+  align-items: center;
 }
 .contact-text {
   color: white;
@@ -79,7 +94,8 @@ video {
 
 .alert {
   color: #333;
-  top: 30%;
+  bottom: 1px;
+  top: 1px;
   left: 15px;
   position: relative;
   font-weight: bold;
@@ -94,17 +110,37 @@ video {
   width: 100vw;
   display: flex;
 }
-.controls {
+
+.controls-1 {
   position: absolute;
-  bottom: 30px;
-  left: 50%;
+  bottom: 15px;
+  right: 455px;
   transform: translateX(-50%);
   display: flex;
   gap: 20px;
 }
+
+.controls-2 {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.endCall {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
 .call-icon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 .call-icon.active {
   filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
@@ -115,28 +151,78 @@ video {
 }
 .btn {
   padding: 15px 30px;
-  border-radius: 50px;
-  border-width: 3px;
-  border-color: white;
+  border-radius: 20px;
+  border-width: 0px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
   background: #333;
 }
 .btn.active {
   border-color: black;
   background: white;
+  color: black;
 }
 .btn.special {
-  background: #4285f4;
+  background: rgba(255, 255, 255, 0.833);
+  color: black;
 } /* Google Blue */
+.btn.special:hover {
+  background: white;
+  transition: background-color 0.3s ease;
+}
+
 .btn.end {
+  color: black;
   background: #ea4335;
 } /* Red End Call */
+.btn.end:hover {
+  background: #c62828;
+  transition: background-color 0.3s ease;
+}
 
-.endCall {
-  position: absolute;
-  bottom: 30px;
-  left: 90%;
-  transform: translateX(-50%);
+.with-border {
+  border-left: 2px solid white;
+  padding-left: 20px;
+}
+
+/* Call End style */
+.end-screen {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #333;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
+}
+
+.superTitle {
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.FF-icon {
+  top: 400px;
+  height: 250px;
+  width: 250px;
+}
+
+.returnButton {
+  font-size: large;
+  font-weight: bold;
+  padding: 20px;
+  bottom: 20px;
+  border-radius: 20px;
+  background-color: white;
+  color: #001c57;
+}
+.returnButton:hover {
+  background-color: rgb(202, 202, 202);
+  transition: background-color 0.3s ease;
 }

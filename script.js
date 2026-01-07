@@ -1,26 +1,37 @@
 // Button logic
-buttonReg = { microphone: false, webcam: false, parts: false };
+buttonReg = {
+  microphone: true,
+  webcam: true,
+  parts: false,
+  chat: false,
+  share: false,
+};
 function activate(id) {
   const btn = document.getElementById(id);
   const icon = document.getElementById(id + "-icon");
   if (!buttonReg[id]) {
     btn.classList.add("active");
-    icon.src = "images/" + id + "-slash.svg";
+    icon.src = `images/${id}-slash.svg`;
     icon.classList.remove("active");
     buttonReg[id] = true;
   } else {
     btn.classList.remove("active");
-    icon.src = "images/" + id + ".svg";
+    icon.src = `images/${id}.svg`;
     icon.classList.add("active");
     buttonReg[id] = false;
   }
 }
 
+function endCall() {
+  // Close the app (if running in a browser, redirect to a "Goodbye" page)
+  console.log("Ending the call...");
+  window.location.href = "goodbye.html"; // Redirect to a goodbye page
+}
+
 // Scan for DeepFake Logic
 function startScan() {
   const btn = document.querySelector(".special");
-  btn.innerText = "Scanning...";
-  btn.style.backgroundColor = "#fbbc05"; // Yellow for processing
+  btn.style.backgroundColor = "#7a7a7aff";
 
   // Simulate AI delay
   setTimeout(() => {
@@ -38,20 +49,17 @@ function startScan() {
       popup_icon.src = "images/warning.svg";
       popup_text.innerText = "DEEPFAKE DETECTED";
       popup.classList.add("visible");
-      btn.innerText = "Threat Detected";
-      btn.style.backgroundColor = "red";
+      btn.style.backgroundColor = "rgba(255, 75, 75, 1)";
     } else {
       popup_icon.src = "images/shield.svg";
       popup_text.innerText = "VERIFIED REAL";
       popup.classList.add("visible");
-      btn.innerText = "Verified Safe";
-      btn.style.backgroundColor = "green";
+      btn.style.backgroundColor = "rgba(35, 232, 111, 1)";
     }
-  }, 3000); // 3 second delay
+  }, 2000); // 2 second delay
   setTimeout(() => {
     document.getElementById("overlay").classList.remove("visible");
-    btn.innerText = "🛡️ Scan Call";
-    btn.style.backgroundColor = "#4285f4";
+    btn.style.backgroundColor = "rgba(255, 255, 255, 0.833)";
   }, 6000);
 }
 
@@ -79,4 +87,10 @@ function showPerson(id) {
     video.src = "video/video-deepfake.mp4"; // Switch to the fake video
     video.play();
   }
+}
+
+//Window switching logic
+function closeApp() {
+  console.log("Closing the app...");
+  window.close(); // Close the current window
 }
