@@ -33,7 +33,7 @@ function activate(id) {
 function endCall() {
   // Close the app (if running in a browser, redirect to a "Goodbye" page)
   console.log("Ending the call...");
-  window.location.href = "goodbye.html"; // Redirect to a goodbye page
+  window.location.href = "goodBye.html"; // Redirect to a goodbye page
 }
 
 // Scan for DeepFake Logic
