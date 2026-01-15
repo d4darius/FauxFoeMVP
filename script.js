@@ -47,19 +47,18 @@ function startScan() {
     // OR checks which video is playing if you implement video switching
     video = document.getElementById("callerVideo");
     var isDeepfake = false;
-    if (video.src.split("/")[4].toString() === "video-deepfake.mp4")
-      isDeepfake = true;
+    if (video.src.endsWith("video/video-deepfake.mp4")) isDeepfake = true;
 
     var popup = document.getElementById("overlay");
     var popup_icon = document.getElementById("alert-icon");
     var popup_text = document.getElementById("alert-text");
     if (isDeepfake) {
-      popup_icon.src = "images/warning.svg";
+      popup_icon.src = "./images/warning.svg";
       popup_text.innerText = "DEEPFAKE DETECTED";
       popup.classList.add("visible");
       btn.style.backgroundColor = "rgba(255, 75, 75, 1)";
     } else {
-      popup_icon.src = "images/shield.svg";
+      popup_icon.src = "./images/shield.svg";
       popup_text.innerText = "VERIFIED REAL";
       popup.classList.add("visible");
       btn.style.backgroundColor = "rgba(35, 232, 111, 1)";
